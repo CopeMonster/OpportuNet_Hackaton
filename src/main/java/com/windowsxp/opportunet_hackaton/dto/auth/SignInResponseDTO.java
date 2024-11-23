@@ -8,4 +8,11 @@ import lombok.Data;
 public class SignInResponseDTO {
     private String token;
     private String message;
+
+    public static SignInResponseDTO from(String token, String message) {
+        return SignInResponseDTO.builder()
+                .token(token)
+                .message("Login successful!")
+                .build();
+    }
 }

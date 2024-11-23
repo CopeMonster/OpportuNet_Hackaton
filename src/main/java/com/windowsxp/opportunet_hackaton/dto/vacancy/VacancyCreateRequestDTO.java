@@ -7,6 +7,7 @@ import lombok.Data;
 
 @Data
 public class VacancyCreateRequestDTO {
+    private Long companyId;
     private String title;
     private String description;
     private String requirement;

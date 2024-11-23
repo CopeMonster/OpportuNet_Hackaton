@@ -1,60 +1,46 @@
 package com.windowsxp.opportunet_hackaton.utils;
 
+import com.windowsxp.opportunet_hackaton.entities.Student;
 import com.windowsxp.opportunet_hackaton.entities.User;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.security.Key;
 import java.util.Date;
 
 @Component
 public class JwtTokenProvider {
-    @Value("${jwt.secret}")
-    private String jwtSecret;
+    private final Key jwtSecret = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
     @Value("${jwt.expiration}")
     private Long jwtExpirationInMillis;
 
-    // Generate a token
     public String generateToken(User user) {
         return Jwts.builder()
                 .setSubject(user.getEmail())
-                .claim("role", user.getRole().name())
+                .claim("userType", user instanceof Student ? "STUDENT" : "COMPANY")
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationInMillis))
-                .signWith(SignatureAlgorithm.RS512, jwtSecret)
+                .signWith(jwtSecret)
                 .compact();
     }
 
-    // Validate a token
+    public String getEmailFromToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(jwtSecret)
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
+
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token); // Validate the token
             return true;
-        } catch (MalformedJwtException | ExpiredJwtException | UnsupportedJwtException | IllegalArgumentException ex) {
-            // Handle specific JWT validation exceptions here
-            System.out.println("Invalid JWT token: " + ex.getMessage());
+        } catch (JwtException e) {
             return false;
         }
-    }
-
-    // Extract email (subject) from token
-    public String getEmailFromToken(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
-                .parseClaimsJws(token)
-                .getBody();
-
-        return claims.getSubject();
-    }
-
-    // Extract role from token
-    public String getRoleFromToken(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
-                .parseClaimsJws(token)
-                .getBody();
-
-        return claims.get("role", String.class);
     }
 }

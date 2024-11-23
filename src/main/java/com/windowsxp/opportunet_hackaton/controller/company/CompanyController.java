@@ -1,40 +1,33 @@
 package com.windowsxp.opportunet_hackaton.controller.company;
 
-import com.windowsxp.opportunet_hackaton.dto.vacancy.VacancyCreateRequestDTO;
-import com.windowsxp.opportunet_hackaton.dto.vacancy.VacancyCreateResponseDTO;
-import com.windowsxp.opportunet_hackaton.dto.vacancy.VacancyGetDTO;
-import com.windowsxp.opportunet_hackaton.entities.Vacancy;
-import com.windowsxp.opportunet_hackaton.service.vacancy.VacancyService;
-import jakarta.validation.Valid;
+import com.windowsxp.opportunet_hackaton.dto.auth.company.CompanyDTO;
+import com.windowsxp.opportunet_hackaton.dto.auth.student.StudentDTO;
+import com.windowsxp.opportunet_hackaton.repositories.CompanyRepository;
+import com.windowsxp.opportunet_hackaton.service.company.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/companies")
 @RequiredArgsConstructor
 public class CompanyController {
-    private final VacancyService vacancyService;
+    private final CompanyService companyService;
 
-    @PostMapping("/{companyId}/vacancies")
-    public ResponseEntity<VacancyCreateResponseDTO> createVacancy(
-            @PathVariable Long companyId, @Valid @RequestBody VacancyCreateRequestDTO dto) {
+    @GetMapping("/{companyId}")
+    public ResponseEntity<CompanyDTO> getCompanyById(@PathVariable Long companyId) {
+        CompanyDTO companyDTO = companyService.getCompanyById(companyId);
 
-        VacancyCreateResponseDTO vacancy = vacancyService.createVacancy(companyId, dto);
-        return ResponseEntity.ok(vacancy);
+        return ResponseEntity.ok(companyDTO);
     }
 
-    @GetMapping("/{companyId}/vacancies/{vacancyId}")
-    public ResponseEntity<VacancyGetDTO> getVacancy(@PathVariable Long companyId, @PathVariable Long vacancyId) {
-        VacancyGetDTO vacancyGetDTO = vacancyService.getVacancy(vacancyId);
-        return ResponseEntity.ok(vacancyGetDTO);
-    }
+    @GetMapping
+    public ResponseEntity<List<CompanyDTO>> getCompanies() {
+        List<CompanyDTO> companyDTOS = companyService.getCompanies();
 
-    @GetMapping("/{companyId}/vacancies")
-    public ResponseEntity<List<VacancyGetDTO>> getVacancies(@PathVariable Long companyId) {
-        List<VacancyGetDTO> vacancyGetDTOs = vacancyService.getVacancies(companyId);
-        return ResponseEntity.ok(vacancyGetDTOs);
+        return ResponseEntity.ok(companyDTOS);
     }
 }

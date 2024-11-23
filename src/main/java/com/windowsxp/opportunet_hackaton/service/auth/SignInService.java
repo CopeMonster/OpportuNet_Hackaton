@@ -28,9 +28,6 @@ public class SignInService {
 
         String token = jwtTokenProvider.generateToken(user);
 
-        return SignInResponseDTO.builder()
-                .token(token)
-                .message("Login successful!")
-                .build();
+        return SignInResponseDTO.from(token, "Login successfully");
     }
 }

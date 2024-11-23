@@ -24,7 +24,6 @@ public class SignUpService {
     private final StudentRepository studentRepository;
     private final CompanyRepository companyRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtTokenProvider jwtTokenProvider;
 
     public StudentSignUPResponseDTO registerStudent(@Valid StudentSignUPRequestDTO dto) {
         if (userRepository.existsByEmail(dto.getEmail())) {
@@ -41,12 +40,7 @@ public class SignUpService {
 
         studentRepository.save(student);
 
-        return StudentSignUPResponseDTO.builder()
-                .userId(student.getId())
-                .email(student.getEmail())
-                .fullName(student.getFullName())
-                .message("Student registered successfully!")
-                .build();
+        return StudentSignUPResponseDTO.from(student);
     }
 
     public CompanySignUPResponseDTO registerCompany(@Valid CompanySignUPRequestDTO dto) {
@@ -63,11 +57,6 @@ public class SignUpService {
                 .build();
         companyRepository.save(company);
 
-        return CompanySignUPResponseDTO.builder()
-                .userId(company.getId())
-                .email(company.getEmail())
-                .name(company.getName())
-                .message("Company registered successfully")
-                .build();
+        return CompanySignUPResponseDTO.from(company);
     }
 }

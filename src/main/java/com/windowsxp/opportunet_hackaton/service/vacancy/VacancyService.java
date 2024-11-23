@@ -24,8 +24,8 @@ public class VacancyService {
     private final CompanyRepository companyRepository;
 
     @Transactional
-    public VacancyCreateResponseDTO createVacancy(Long companyId, @Valid VacancyCreateRequestDTO dto) {
-        Company company = companyRepository.findById(companyId)
+    public VacancyCreateResponseDTO createVacancy(@Valid VacancyCreateRequestDTO dto) {
+        Company company = companyRepository.findById(dto.getCompanyId())
                 .orElseThrow(CompanyNotFoundException::new);
 
         Vacancy vacancy = Vacancy.builder()
@@ -42,18 +42,7 @@ public class VacancyService {
 
         vacancyRepository.save(vacancy);
 
-        return VacancyCreateResponseDTO.builder()
-                .vacancyId(vacancy.getId())
-                .title(vacancy.getTitle())
-                .description(vacancy.getDescription())
-                .requirement(vacancy.getRequirements())
-                .location(vacancy.getLocation())
-                .experienceType(vacancy.getExperienceType())
-                .employmentType(vacancy.getEmploymentType())
-                .workScheduleType(vacancy.getWorkScheduleType())
-                .salary(vacancy.getSalary())
-                .company(vacancy.getCompany())
-                .build();
+        return VacancyCreateResponseDTO.from(vacancy);
     }
 
     @Transactional
@@ -61,17 +50,7 @@ public class VacancyService {
         Vacancy vacancy = vacancyRepository.findById(vacancyId)
                 .orElseThrow(VacancyNotFoundException::new);
 
-        return VacancyGetDTO.builder()
-                .title(vacancy.getTitle())
-                .description(vacancy.getDescription())
-                .requirement(vacancy.getRequirements())
-                .location(vacancy.getLocation())
-                .experienceType(vacancy.getExperienceType())
-                .employmentType(vacancy.getEmploymentType())
-                .workScheduleType(vacancy.getWorkScheduleType())
-                .salary(vacancy.getSalary())
-                .company(vacancy.getCompany())
-                .build();
+        return VacancyGetDTO.from(vacancy);
     }
 
     @Transactional
@@ -81,17 +60,13 @@ public class VacancyService {
                 .filter(vacancy -> Objects.equals(vacancy.getCompany().getId(), companyId))
                 .toList();
 
-        return vacancies.stream().map(vacancy -> VacancyGetDTO.builder()
-                        .title(vacancy.getTitle())
-                        .description(vacancy.getDescription())
-                        .requirement(vacancy.getRequirements())
-                        .location(vacancy.getLocation())
-                        .experienceType(vacancy.getExperienceType())
-                        .employmentType(vacancy.getEmploymentType())
-                        .workScheduleType(vacancy.getWorkScheduleType())
-                        .salary(vacancy.getSalary())
-                        .company(vacancy.getCompany())
-                        .build())
-                .toList();
+        return vacancies.stream().map(VacancyGetDTO::from).toList();
+    }
+
+    @Transactional
+    public List<VacancyGetDTO> getVacancies() {
+        List<Vacancy> vacancies = vacancyRepository.findAll();
+
+        return vacancies.stream().map(VacancyGetDTO::from).toList();
     }
 }
