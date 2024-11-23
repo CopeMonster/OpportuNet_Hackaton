@@ -1,4 +1,4 @@
-package com.windowsxp.opportunet_hackaton.dto.student;
+package com.windowsxp.opportunet_hackaton.dto.auth.student;
 
 import lombok.Builder;
 import lombok.Data;

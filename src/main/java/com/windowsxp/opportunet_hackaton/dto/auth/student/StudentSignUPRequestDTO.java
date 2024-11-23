@@ -1,4 +1,4 @@
-package com.windowsxp.opportunet_hackaton.dto.company;
+package com.windowsxp.opportunet_hackaton.dto.auth.student;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -9,17 +9,17 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CompanySignUPRequestDTO {
-    @NotBlank(message = "Company name is required")
-    private String name;
+public class StudentSignUPRequestDTO {
+    @NotBlank(message = "Full name is required")
+    private String fullName;
 
-    @NotBlank(message = "BIN is required")
-    @Pattern(regexp = "^[0-9]{12}$", message = "BIN must be 12 digits")
-    private String BIN;
-
-    @NotBlank(message = "Contact email is required")
+    @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
-    private String contactEmail;
+    private String email;
+
+    @NotBlank(message = "Phone number is required")
+    @Pattern(regexp = "^[0-9]{10,15}$", message = "Invalid phone number")
+    private String phoneNumber;
 
     @NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password must be at least 8 characters long")

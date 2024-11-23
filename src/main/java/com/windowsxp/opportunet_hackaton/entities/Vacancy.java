@@ -4,11 +4,17 @@ import com.windowsxp.opportunet_hackaton.entities.enums.EmploymentType;
 import com.windowsxp.opportunet_hackaton.entities.enums.ExperienceType;
 import com.windowsxp.opportunet_hackaton.entities.enums.WorkScheduleType;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "vacancies")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,6 +48,10 @@ public class Vacancy {
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    @ManyToOne()
+    @JoinColumn(name = "company_id", referencedColumnName = "id")
+    private Company company;
 
     @PrePersist
     public void onCreate() {

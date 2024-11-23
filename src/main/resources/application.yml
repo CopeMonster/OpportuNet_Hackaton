@@ -1,8 +1,8 @@
 jwt:
   secret: hackaton
   expiration: 7200000
-
-
+upload:
+  directory: src/main/resources/uploads/cvs
 spring:
   application:
     name: OpportuNet_Hackaton
@@ -14,5 +14,15 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
 server:
   port: 8080
+
+

@@ -1,8 +1,6 @@
 package com.windowsxp.opportunet_hackaton.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -18,4 +16,8 @@ public class Student extends User {
 
     @Column(nullable = false, unique = true)
     private String phoneNumber;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cv_id", referencedColumnName = "id")
+    private CV cv;
 }

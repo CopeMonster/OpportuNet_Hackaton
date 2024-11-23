@@ -1,9 +1,9 @@
 package com.windowsxp.opportunet_hackaton.service.auth;
 
-import com.windowsxp.opportunet_hackaton.dto.company.CompanySignUPRequestDTO;
-import com.windowsxp.opportunet_hackaton.dto.company.CompanySignUPResponseDTO;
-import com.windowsxp.opportunet_hackaton.dto.student.StudentSignUPRequestDTO;
-import com.windowsxp.opportunet_hackaton.dto.student.StudentSignUPResponseDTO;
+import com.windowsxp.opportunet_hackaton.dto.auth.company.CompanySignUPRequestDTO;
+import com.windowsxp.opportunet_hackaton.dto.auth.company.CompanySignUPResponseDTO;
+import com.windowsxp.opportunet_hackaton.dto.auth.student.StudentSignUPRequestDTO;
+import com.windowsxp.opportunet_hackaton.dto.auth.student.StudentSignUPResponseDTO;
 import com.windowsxp.opportunet_hackaton.entities.Company;
 import com.windowsxp.opportunet_hackaton.entities.Student;
 import com.windowsxp.opportunet_hackaton.entities.enums.Role;

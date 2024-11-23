@@ -1,14 +1,14 @@
 package com.windowsxp.opportunet_hackaton.controller.home;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/")
+@Controller
 public class HomeController {
-    @GetMapping
-    public void home() {
-        return;
+    @GetMapping("/")
+    public String index(Model model) {
+        model.addAttribute("name", "Spring Boot User");
+        return "index";
     }
 }

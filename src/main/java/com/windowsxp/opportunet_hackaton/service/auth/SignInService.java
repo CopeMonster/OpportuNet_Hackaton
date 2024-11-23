@@ -1,7 +1,7 @@
 package com.windowsxp.opportunet_hackaton.service.auth;
 
-import com.windowsxp.opportunet_hackaton.dto.SignInRequestDTO;
-import com.windowsxp.opportunet_hackaton.dto.SignInResponseDTO;
+import com.windowsxp.opportunet_hackaton.dto.auth.SignInRequestDTO;
+import com.windowsxp.opportunet_hackaton.dto.auth.SignInResponseDTO;
 import com.windowsxp.opportunet_hackaton.entities.User;
 import com.windowsxp.opportunet_hackaton.exception.InvalidCredentials;
 import com.windowsxp.opportunet_hackaton.exception.UserNotFoundException;
