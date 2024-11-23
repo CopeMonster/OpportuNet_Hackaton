@@ -27,12 +27,15 @@ public class Vacancy {
     private String location;
 
     @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
     private ExperienceType experienceType;
 
     @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
     private EmploymentType employmentType;
 
     @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
     private WorkScheduleType workScheduleType;
 
     private float salary;
