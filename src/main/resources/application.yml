@@ -1,0 +1,18 @@
+jwt:
+  secret: hackaton
+  expiration: 7200000
+
+
+spring:
+  application:
+    name: OpportuNet_Hackaton
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5434/postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080

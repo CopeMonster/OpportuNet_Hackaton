@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 @SuperBuilder
 public class User {
     @Id

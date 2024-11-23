@@ -1,6 +1,10 @@
 package com.windowsxp.opportunet_hackaton.controller.auth;
 
 import com.windowsxp.opportunet_hackaton.dto.*;
+import com.windowsxp.opportunet_hackaton.dto.company.CompanySignUPRequestDTO;
+import com.windowsxp.opportunet_hackaton.dto.company.CompanySignUPResponseDTO;
+import com.windowsxp.opportunet_hackaton.dto.student.StudentSignUPRequestDTO;
+import com.windowsxp.opportunet_hackaton.dto.student.StudentSignUPResponseDTO;
 import com.windowsxp.opportunet_hackaton.service.auth.SignInService;
 import com.windowsxp.opportunet_hackaton.service.auth.SignUpService;
 import jakarta.validation.Valid;

@@ -11,8 +11,6 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 @SuperBuilder
 public class Student extends User {
     @Column(nullable = false)
