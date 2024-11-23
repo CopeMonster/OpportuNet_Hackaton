@@ -1,5 +1,6 @@
 package com.windowsxp.opportunet_hackaton.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
@@ -12,9 +13,9 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Student extends User {
-    private String username;
+    @Column(nullable = false)
+    private String fullName;
 
-    private String firstname;
-
-    private String lastname;
+    @Column(nullable = false, unique = true)
+    private String phoneNumber;
 }

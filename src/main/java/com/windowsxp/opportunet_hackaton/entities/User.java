@@ -1,5 +1,6 @@
 package com.windowsxp.opportunet_hackaton.entities;
 
+import com.windowsxp.opportunet_hackaton.entities.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -11,9 +11,9 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Company extends User {
+    @Column(nullable = false)
     private String name;
 
-    private String description;
-
-
+    @Column(nullable = false, unique = true)
+    private String BIN;
 }

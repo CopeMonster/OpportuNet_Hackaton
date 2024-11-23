@@ -1,5 +1,8 @@
 package com.windowsxp.opportunet_hackaton.entities;
 
+import com.windowsxp.opportunet_hackaton.entities.enums.EmploymentType;
+import com.windowsxp.opportunet_hackaton.entities.enums.ExperienceType;
+import com.windowsxp.opportunet_hackaton.entities.enums.WorkScheduleType;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -11,9 +14,7 @@ public class Vacancy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long company;
-
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String title;
 
     @Column(nullable = false)
@@ -26,9 +27,15 @@ public class Vacancy {
     private String location;
 
     @Enumerated(value = EnumType.STRING)
-    private VacancyType vacancyType;
+    private ExperienceType experienceType;
 
-    private Double salary;
+    @Enumerated(value = EnumType.STRING)
+    private EmploymentType employmentType;
+
+    @Enumerated(value = EnumType.STRING)
+    private WorkScheduleType workScheduleType;
+
+    private float salary;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
