@@ -34,6 +34,7 @@ public class StudentService {
         return StudentDTO.from(student);
     }
 
+
     public List<StudentDTO> getStudents() {
         List<Student> students = studentRepository.findAll();
         return students.stream().map(StudentDTO::from).toList();

@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "vacancies")
@@ -52,6 +53,7 @@ public class Vacancy {
     @ManyToOne()
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     private Company company;
+
 
     @PrePersist
     public void onCreate() {
