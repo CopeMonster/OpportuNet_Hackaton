@@ -49,6 +49,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(errorResponse.getStatus()).body(errorResponse);
     }
 
+    @ExceptionHandler(VacancyNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleVacancyNotFoundException(VacancyNotFoundException ex) {
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .status(HttpStatus.NOT_FOUND.value())
+                .message(ex.getMessage())
+                .build();
+
+        return ResponseEntity.status(errorResponse.getStatus()).body(errorResponse);
+    }
+
     @ExceptionHandler(EmptyFileException.class)
     public ResponseEntity<ErrorResponse> handleEmptyFileException(EmptyFileException ex) {
         ErrorResponse errorResponse = ErrorResponse.builder()

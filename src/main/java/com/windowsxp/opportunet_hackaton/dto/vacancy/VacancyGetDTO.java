@@ -9,8 +9,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class VacancyCreateResponseDTO {
-    private Long vacancyId;
+public class VacancyGetDTO {
     private String title;
     private String description;
     private String requirement;
