@@ -102,7 +102,6 @@ public class VacancyService {
     public List<VacancyGetDTO> getVacanciesByFilter(String location, Float minSalary, Float maxSalary,
                                                     ExperienceType experienceType, EmploymentType employmentType,
                                                     WorkScheduleType workScheduleType) {
-
         List<Vacancy> vacancies = vacancyRepository.findAll();
 
         return vacancies.stream()

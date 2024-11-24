@@ -38,8 +38,8 @@ public class VacancyController {
         return ResponseEntity.ok(vacancyGetDTO);
     }
 
-    @GetMapping
-    public ResponseEntity<List<VacancyGetDTO>> getVacanciesByCompany(@RequestBody Long companyId) {
+    @GetMapping("/{companyId}")
+    public ResponseEntity<List<VacancyGetDTO>> getVacanciesByCompany(@PathVariable Long companyId) {
         List<VacancyGetDTO> vacancyGetDTOs = vacancyService.getVacancies(companyId);
         return ResponseEntity.ok(vacancyGetDTOs);
     }
@@ -65,7 +65,7 @@ public class VacancyController {
         return ResponseEntity.ok(request);
     }
 
-    @GetMapping
+    @GetMapping("/filter")
     public ResponseEntity<List<VacancyGetDTO>> getVacanciesByFilter(
             @RequestParam(value = "location", required = false) String location,
             @RequestParam(value = "minSalary", required = false) Float minSalary,
