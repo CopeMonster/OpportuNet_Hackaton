@@ -15,18 +15,25 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/vacancies")
 @RequiredArgsConstructor
 public class VacancyController {
     private final VacancyService vacancyService;
     private final StudentRepository studentRepository;
 
-    @PostMapping
+    @GetMapping("/create")
+    public String createPage(Model model) {
+        return "Create_Project";
+    }
+
+    @PostMapping("/create")
     public ResponseEntity<VacancyCreateResponseDTO> createVacancy(@Valid @RequestBody VacancyCreateRequestDTO dto) {
         VacancyCreateResponseDTO vacancy = vacancyService.createVacancy(dto);
         return ResponseEntity.ok(vacancy);

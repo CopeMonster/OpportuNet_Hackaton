@@ -1,18 +1,138 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>SpringBoot & React | Progressive Webapp Demo</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile and Settings</title>
+    <style>
+        .back-arrow {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .back-arrow:hover {
+            color: #FFC700;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .grid-item {
+            background-color: #ffd25d;
+            text-align: center;
+            padding: 110px 0;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-radius: 15px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #cccccc00;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%;
+        }
+
+        label {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            color: #000000;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
 <body>
+    <a href="mainreg.html" class="back-arrow">Main</a>
+    <div id="profile-section" class="section">
+        <h1>Profile</h1>
+        <div class="grid-container">
+            <div class="grid-item" onclick="navigateTo('settings-section')">Settings</div>
+            <div class="grid-item">Search</div>
+            <div class="grid-item">Competition</div>
+            <div class="grid-item" onclick="location.href='compmenu.html'">Courses</div>
+        </div>
+    </div>
 
-<div id="root" th:utext="${content}"></div>
+    <div id="settings-section" class="section hidden">
+        <button class="back-btn" onclick="navigateTo('profile-section')">Back</button>
+        <h1>Settings</h1>
+        <form>
+            <label for="company-name">Enter your company’s new name</label>
+            <input type="text" id="company-name" placeholder="Company name">
+            <label for="contact-email">Enter new contact email</label>
+            <input type="email" id="contact-email" placeholder="Email">
+            <label for="password">Enter your password</label>
+            <input type="password" id="password" placeholder="Password">
+        </form>
+    </div>
 
-<script src="/bundle.js"></script>
-<script th:inline="javascript">
-    window.renderClient();
-</script>
-
+    <script src="../static/js/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Vacancy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .form-section {
+            flex: 3;
+            padding: 40px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .form-section h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            outline: none;
+            background: transparent;
+        }
+        .form-group input:focus {
+            border-bottom: 2px solid #fbc531;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .tag {
+            padding: 8px 15px;
+            font-size: 14px;
+            border: 2px solid #000;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .tag:hover {
+            background-color: #fbc531;
+            border-color: #fbc531;
+            color: #fff;
+        }
+        .tag.selected {
+            background-color: #fbc531;
+            border-color: #fbc531;
+            color: #fff;
+        }
+        .upload-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .upload-button {
+            width: 50px;
+            height: 50px;
+            background-color: #fbc531;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10%;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+        }
+        .upload-info {
+            font-size: 14px;
+            color: #555;
+        }
+        .terms {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .terms input {
+            width: 16px;
+            height: 16px;
+        }
+        .terms label {
+            font-size: 14px;
+            color: #555;
+        }
+        .submit-btn {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .submit-btn button {
+            background-color: #fbc531;
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .submit-btn button:hover {
+            background-color: #e1b800;
+        }
+        .help-section {
+            flex: 1;
+            background-color: #ffd966;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            position: relative;
+            padding-bottom: 40px;
+        }
+        .help-section .help-button {
+            background-color: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+        }
+        .close-btn:hover {
+            color: #000;
+        }
+        .tag {
+            padding: 8px 15px;
+            font-size: 14px;
+            border: 2px solid #000;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .tag:hover {
+            background-color: #fbc531;
+            border-color: #fbc531;
+            color: #fff;
+        }
+        .tag.selected {
+            background-color: #fbc531;
+            border-color: #fbc531;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <a href="compmenu.html" class="close-btn">×</a>
+            <h1>Create Vacancy</h1>
+            <form>
+                <div class="form-group">
+                    <input type="text" placeholder="Enter your project name">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Description for project">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Requirements">
+                </div>
+                <div class="tags-container">
+                    <div class="tag">Part-time</div>
+                    <div class="tag">Full-time</div>
+                    <div class="tag">Internship</div>
+                    <div class="tag">ProjectWork</div>
+                    <div class="tag">Volunteering</div>
+                    <div class="tag">WorkPlacement</div>
+                    <div class="tag">FullDay</div>
+                    <div class="tag">ShiftSchedule</div>
+                    <div class="tag">FlexibleSchedule</div>
+                    <div class="tag">RemoteWorking</div>
+                    <div class="tag">RotationBasedWork</div>
+                    <div class="tag">>200k$</div>
+                </div>
+                <div class="upload-section">
+                    <div class="upload-button">+</div>
+                    <div class="upload-info">You can add some docx and other documents</div>
+                </div>
+                <div class="terms">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">You confirm with our Terms</label>
+                </div>
+                <div class="submit-btn">
+                    <button type="submit">➔</button>
+                </div>
+            </form>
+        </div>
+        <div class="help-section">
+            <div class="help-button">?</div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.classList.toggle('selected');
+            });
+        });
+    </script>
+</body>
+</html>

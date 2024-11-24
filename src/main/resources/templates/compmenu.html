@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .applications-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .application {
+            display: flex;
+            gap: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .application-thumbnail {
+            width: 80px;
+            height: 80px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .application-details {
+            flex: 1;
+        }
+
+        .application-details h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .application-details p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .open-btn {
+            background-color: #ffd25d;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .open-btn:hover {
+            background-color: #ffbc00;
+        }
+
+        header {
+            background-color: #f9f9f9;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-options {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .nav-link:hover {
+            color: #ffbc00;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+        }
+
+        .profile-pic {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-options">
+                <a href="mainreg.html" class="nav-link">Main</a>
+                <a href="Create_Project.html" class="nav-link">Create Project </a>
+            </div>
+            <div class="profile">
+                <span>Company #1</span>
+                <img src="profile-pic.png" alt="Profile Picture" class="profile-pic">
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+        <h1>My Applications</h1>
+        <div class="applications-container">
+            <div class="application">
+                <div class="application-thumbnail"></div>
+                <div class="application-details">
+                    <h2>Name 1</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="open-btn" onclick="location.href='app.html'">Open</button>
+                </div>
+            </div>
+
+            <div class="application">
+                <div class="application-thumbnail"></div>
+                <div class="application-details">
+                    <h2>Name 2</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="open-btn" onclick="location.href='app.html'">Open</button>
+                </div>
+            </div>
+
+            <div class="application">
+                <div class="application-thumbnail"></div>
+                <div class="application-details">
+                    <h2>Name 3</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="open-btn" onclick="location.href='app.html'">Open</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

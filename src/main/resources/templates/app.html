@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+
+        header {
+            background-color: #f9f9f9;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-options {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .nav-link:hover {
+            color: #ffbc00;
+        }
+
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+        }
+
+        .profile-pic {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin-bottom: 10px;
+        }
+
+        .clear-filters {
+            color: #f4b400;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .sort-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .sort-select {
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .results-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .result-item {
+            display: flex; /* Restores the horizontal alignment of logo and text */
+            align-items: center; /* Vertically centers the logo and text */
+            margin-bottom: 20px; /* Adds spacing between items */
+            padding: 20px; /* Adds padding around each item */
+            background-color: #f9f9f9; /* Optional: Background for better visibility */
+            border-radius: 10px; /* Optional: Rounded corners */
+            width: 80%; /* Optional: Width for consistency */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+        }
+
+        .results-container {
+            position: absolute; /* Allows precise positioning */
+            bottom: 15%; /* Pushes the container towards the bottom */
+            right: 10%; /* Aligns the container towards the right */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Aligns items to the start within the container */
+            text-align: left; /* Ensures the text is left-aligned */
+            transform: translate(0, 0); /* Keeps alignment simple */
+            padding: 20px;
+            max-width: 80%; /* Ensures the container doesn’t exceed the page width */
+        }
+
+        .result-item {
+            display: flex; /* Keeps the horizontal alignment of logo and text */
+            align-items: center; /* Vertically centers the logo and text */
+            margin-bottom: 20px; /* Adds spacing between items */
+            padding: 20px; /* Adds moderate padding around each item */
+            background-color: #f9f9f9; /* Optional: Background for better visibility */
+            border-radius: 10px; /* Rounded corners */
+            width: 100%; /* Ensures consistency across items */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for aesthetics */
+        }
+
+        .result-thumbnail {
+            width: 80px; /* Balanced logo size */
+            height: 80px;
+            background-color: #e0e0e0; /* Placeholder color for the logo */
+            margin-right: 20px; /* Adds space between the logo and text */
+            border-radius: 50%; /* Keeps the thumbnail circular */
+        }
+
+        .result-info h3 {
+            font-size: 24px; /* Balanced title size */
+            margin: 0 0 10px 0; /* Adds spacing below the title */
+            font-weight: bold;
+        }
+
+        .result-info p {
+            font-size: 18px; /* Moderate size for details */
+            margin: 0;
+            color: #555;
+            line-height: 1.6; /* Adjusts line spacing for better readability */
+        }
+
+        .result-info .tag,
+        .result-info .date {
+            font-weight: bold; /* Keeps the tag and date bold for emphasis */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-options">
+                <a href="mainreg.html" class="nav-link">Main</a>
+                <a href="Create_Project.html" class="nav-link">Create Project </a>
+            </div>
+            <div class="profile">
+                <span>Company #1</span>
+                <img src="profile-pic.png" alt="Profile Picture" class="profile-pic">
+            </div>
+        </nav>
+    </header>
+    <main>
+        
+        <div class="results-header">
+            <p>5,649 results found. <a href="#" class="clear-filters">Clear Filters</a></p>
+            <div class="sort-container">
+                <span>Sort by</span>
+                <select class="sort-select">
+                    <option value="date">Date</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="results-container">
+            <div class="result-item">
+                <div class="result-thumbnail"></div>
+                <div class="result-info">
+                    <h3><a href="#" class="nav-link">Name 1</a></h3>
+                    <p>John Williams | <span class="tag">Tag: 2345</span> | <span class="date">Date: 24.09.22</span></p>
+                </div>
+            </div>
+            <div class="result-item">
+                <div class="result-thumbnail"></div>
+                <div class="result-info">
+                    <h3><a href="#" class="nav-link">Name 2</a></h3>
+                    <p>John Williams | <span class="tag">Tag: 2345</span> | <span class="date">Date: 24.09.22</span></p>
+                </div>
+            </div>
+            <div class="result-item">
+                <div class="result-thumbnail"></div>
+                <div class="result-info">
+                    <h3><a href="#" class="nav-link">Name 3</a></h3>
+                    <p>John Williams | <span class="tag">Tag: 2345</span> | <span class="date">Date: 24.09.22</span></p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -17,6 +17,7 @@ import java.util.List;
 public class CompanyController {
     private final CompanyService companyService;
 
+
     @GetMapping("/{companyId}")
     public ResponseEntity<CompanyDTO> getCompanyById(@PathVariable Long companyId) {
         CompanyDTO companyDTO = companyService.getCompanyById(companyId);

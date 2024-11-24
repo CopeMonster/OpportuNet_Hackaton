@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .form-section {
+            flex: 3;
+            padding: 40px;
+            background-color: white;
+        }
+        .form-section h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-group input {
+            width: 70%;
+            padding: 10px 0;
+            font-size: 20px;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            outline: none;
+            background: transparent;
+        }
+        .form-group input:focus {
+            border-bottom: 2px solid #fbc531;
+        }
+        .submit-btn {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .submit-btn button {
+            background-color: #fbc531;
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .submit-btn button:hover {
+            background-color: #e1b800;
+        }
+        .help-section {
+            flex: 1;
+            background-color: #ffd966;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .help-section .help-button {
+            background-color: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .help-section .help-button:hover {
+            background-color: #333;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+        }
+        .close-btn:hover {
+            color: #7a602f71;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <a href="#" id="close-btn" class="close-btn">×</a>
+            <h1>Registration</h1>
+            <form>
+                <div class="form-group">
+                    <input type="text" placeholder="Enter your company's name">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Enter your BIN">
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Enter your contact email">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Enter your password">
+                </div>
+                <div class="submit-btn">
+                    <button type="submit">➔</button>
+                </div>
+            </form>
+        </div>
+        <div class="help-section">
+            <div class="help-button">?</div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const closeBtn = document.getElementById('close-btn');
+
+            closeBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                window.location.href = 'maintest.html';
+            });
+        });
+    </script>
+</body>
+</html>

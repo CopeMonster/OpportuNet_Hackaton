@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportu</title>
+
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        .modal {
+            animation-duration: 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .modal-content {
+            animation-duration: 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .hidden {
+            display: none;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .role-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #00000000;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .role-btn:hover {
+            background-color: #7a602f71;
+        }
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        #login-modal .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            font-family: Arial, sans-serif;
+        }
+
+        #login-modal .modal-content h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        #login-modal .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        #login-modal .form-group label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        #login-modal .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        #login-modal .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #FFC700;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+
+        #login-modal .submit-btn:hover {
+            background-color: #E6B800;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            background-color: white;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        header .auth a {
+            border: 2px solid #FFC700;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section.home {
+            background-color: #fff;
+        }
+
+        .logo img {
+            width: 500px;
+            height: auto;
+        }
+
+        .tagline {
+            font-size: 22px;
+            color: #555;
+        }
+
+        .section.news {
+            background-color: #f4f4f4;
+        }
+
+        .section.news h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .section.news ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section.news li {
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: 10px auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 450px;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            margin: 10px;
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 210px;
+            right: 510px;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #7a602f71;
+        }
+
+        #user-info {
+            display: flex;
+            align-items: center;
+        }
+        #profile-pic {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        #user-email {
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Animations for smooth transitions and effects */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .button-hover {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .button-hover:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#news">News</a>
+        </nav>
+        <div class="auth">
+            <a href="#" id="login-link">Login</a>
+            <a href="#" id="signup-link">Sign up</a>
+        </div>
+    </header>
+    <section id="home" class="section home">
+        <div class="logo">
+            <img src="img/logo.png" alt="Opportu Logo">
+        </div>
+        <div class="tagline">Develop your dream by your hands</div>
+    </section>
+    <section id="news" class="section news">
+        <h2>Latest News</h2>
+        <ul>
+            <img src="img/div1.png" style="width: 300px;" alt="">
+            <img src="img/div2.png" style="width: 300px;">
+            <img src="img/div3.png" style="width: 300px;">
+        </ul>
+
+        <div class="modal" id="signup-modal">
+            <div class="modal-content">
+                <button class="close-btn" id="signup-close-btn">&times;</button>
+                <h2>As</h2>
+                <div class="button-container">
+                    <button class="role-btn" id="student-btn">
+                        <img src="img/Group 20.png" style="width: 150px;">
+                    </button>
+                    <button class="role-btn" id="company-btn">
+                        <img src="img/Group 19.png" style="width: 150px;">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="login-modal">
+            <div class="modal-content">
+                <button class="close-btn" id="login-close-btn">&times;</button>
+                <h2>Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginLink = document.getElementById('login-link');
+            const loginModal = document.getElementById('login-modal');
+            const modalContent = loginModal.querySelector('.modal-content');
+            const loginCloseBtn = document.getElementById('login-close-btn');
+
+            const openLoginModal = () => {
+                loginModal.style.display = 'flex';
+                loginModal.style.animationName = 'fadeIn';
+                modalContent.style.animationName = 'fadeIn';
+            };
+
+            const closeLoginModal = () => {
+                loginModal.style.animationName = 'fadeOut';
+                modalContent.style.animationName = 'fadeOut';
+
+                loginModal.addEventListener('animationend', () => {
+                    loginModal.style.display = 'none';
+                }, { once: true });
+            };
+
+            loginLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                openLoginModal();
+            });
+
+            loginCloseBtn.addEventListener('click', () => {
+                closeLoginModal();
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === loginModal) {
+                    closeLoginModal();
+                }
+            });
+        });
+
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const signupLink = document.getElementById('signup-link');
+            const signupModal = document.getElementById('signup-modal');
+            const modalContent = signupModal.querySelector('.modal-content');
+            const signupCloseBtn = document.getElementById('signup-close-btn');
+            const studentBtn = document.getElementById('student-btn');
+            const companytBtn = document.getElementById('company-btn');
+            const openModal = () => {
+                signupModal.style.display = 'flex';
+                signupModal.style.animationName = 'fadeIn';
+                modalContent.style.animationName = 'fadeIn';
+            };
+
+            const closeModal = () => {
+                signupModal.style.animationName = 'fadeOut';
+                modalContent.style.animationName = 'fadeOut';
+
+                signupModal.addEventListener('animationend', () => {
+                    signupModal.style.display = 'none';
+                }, { once: true });
+            };
+
+            signupLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                openModal();
+            });
+
+            signupCloseBtn.addEventListener('click', () => {
+                closeModal();
+            });
+
+            studentBtn.addEventListener('click', () => {
+                window.location.href = 'Registration_Student.html';
+            });
+            companytBtn.addEventListener('click', () => {
+                window.location.href = 'Registration_Company.html';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === signupModal) {
+                    closeModal();
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

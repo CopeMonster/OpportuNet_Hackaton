@@ -17,6 +17,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,13 +33,18 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
 
     @GetMapping("/sign-up/student")
-    public ModelAndView showStudentRegistrationForm() {
-        return new ModelAndView("student_register");
+    public String signUpStudentPage(Model model) {
+        return "Registration_Student";
     }
 
     @GetMapping("/sign-up/company")
-    public ModelAndView showCompanyRegistrationForm() {
-        return new ModelAndView("company_register");
+    public String signUpCompanyPage(Model model) {
+        return "Registration_Company";
+    }
+
+    @GetMapping("/sign-in")
+    public String signInPage(Model model) {
+        return "mainunreg";
     }
 
     @PostMapping("/sign-up/student")
